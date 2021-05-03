@@ -11,6 +11,8 @@ const get_todo = (id) => {
 		.then(res => res.json());
 }
 const post_todo = function (todo) {
+	console.log(`just before the request, todo: ${todo}`);
+
 	return fetch(ip, {
 		method: "POST",
 		body: JSON.stringify(todo),
@@ -18,7 +20,7 @@ const post_todo = function (todo) {
 			"Content-type": "application/json; charset=UTF-8",
 		}
 	})
-		.then(res => res.json());
+	.then(res => res.json());
 }
 const patch_todo = function (todo, id) {
 	return fetch(`${ip}/${id}`, {
