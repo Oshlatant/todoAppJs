@@ -18,6 +18,7 @@ const post_todo = function (todo) {
 		body: JSON.stringify(todo),
 		headers: {
 			"Content-Type": "application/json",
+			'Content-Length': JSON.stringify(todo).length,
 		}
 	})
 	.then(res => res.json());
