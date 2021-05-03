@@ -43,7 +43,7 @@ input[type="checkbox"] {
     outline: none;
 }
 
-.todos_item {
+.todos_todo {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -54,7 +54,7 @@ input[type="checkbox"] {
     border-bottom: solid 1px;
 }
 
-.item_delete {
+.todo_delete {
     position: absolute;
     top: 0;
     right: 0;
@@ -65,13 +65,13 @@ input[type="checkbox"] {
     transition: 0.1s ease-in-out;
 }
 
-.item_delete:hover {
+.todo_delete:hover {
     cursor: pointer;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
     transform: scale(1.4);
 }
 
-.item_text {
+.todo_text {
     padding: 5px 0;
     font-size: 15px;
 }
@@ -80,6 +80,6 @@ input[type="checkbox"] {
     text-decoration: line-through;
 }
 
-.remove_item {
+.remove_todo {
     display: none;
 }
