@@ -11,7 +11,7 @@ const get_todo = (id) => {
 		.then(res => res.json());
 }
 const post_todo = function (todo) {
-	console.log(`just before the request, todo: ${todo}`);
+	console.log(todo);
 
 	return fetch(ip, {
 		method: "POST",
