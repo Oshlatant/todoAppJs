@@ -18,7 +18,9 @@ const post_todo = function (todo) {
 		body: JSON.stringify(todo),
 		headers: {
 			"Content-Type": "application/json",
-			'Content-Length': JSON.stringify(todo).length,
+			"Content-Length": `${JSON.stringify(todo).length}`,
+			"Host": "https://todo-app-js-clmjyw3e0-oshlatant.vercel.app/"
+			
 		}
 	})
 	.then(res => res.json());
