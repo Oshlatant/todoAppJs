@@ -17,7 +17,7 @@ const post_todo = function (todo) {
 		method: "POST",
 		body: JSON.stringify(todo),
 		headers: {
-			"Content-type": "application/json",
+			"Content-Type": "application/json",
 		}
 	})
 	.then(res => res.json());
