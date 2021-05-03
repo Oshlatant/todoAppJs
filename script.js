@@ -95,6 +95,7 @@ form.addEventListener("submit", (e) => {
 
 	post_todo(todo_doc)
 		.then((res) => {
+			console.log(res);
 			todotext.value = "";
 			build_todo(res)
 		})
