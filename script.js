@@ -1,6 +1,6 @@
 const todos = document.querySelector(".todos_list");
 const form = document.querySelector("form");
-const ip = "https://mage-todo-backend.herokuapp.com/todos"
+const ip = "http://localhost:3000/todos"
 
 const get_todos = () => {
 	return fetch(ip)
@@ -18,12 +18,15 @@ const post_todo = function (todo) {
 		body: JSON.stringify(todo),
 		headers: {
 			"Content-Type": "application/json",
-			"Content-Length": `${JSON.stringify(todo).length}`,
-			"Host": "https://todo-app-js-clmjyw3e0-oshlatant.vercel.app/"
-			
+			"Content-Length": `${JSON.stringify(todo).length}`
 		}
 	})
-	.then(res => res.json());
+		.then(res => {
+			
+			console.log(res);
+
+			return res.json();
+		})
 }
 const patch_todo = function (todo, id) {
 	return fetch(`${ip}/${id}`, {
@@ -38,8 +41,7 @@ const patch_todo = function (todo, id) {
 const delete_todo = function (id) {
 	return fetch(`${ip}/${id}`, {
 		method: "DELETE"
-	})
-		.then(res => res.json());
+	});
 }
 
 const create_todo = function (todo_doc) {
