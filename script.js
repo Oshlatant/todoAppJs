@@ -11,7 +11,6 @@ const get_todo = (id) => {
 		.then(res => res.json());
 }
 const post_todo = function (todo) {
-	console.log(todo);
 
 	return fetch(ip, {
 		method: "POST",
@@ -22,8 +21,6 @@ const post_todo = function (todo) {
 		}
 	})
 		.then(res => {
-			
-			console.log(res);
 
 			return res.json();
 		})
@@ -68,7 +65,7 @@ const create_todo = function (todo_doc) {
 
 	todo_checkbox.addEventListener("change", (e) => {
 		get_todo(_id)
-			.then(res => patch_todo({ checked: !res.checked }, _id))
+			.then(res => patch_todo({ checked: !res.data.checked }, _id))
 			.then(() => todo.classList.toggle("text_overline"))
 			.catch(console.error);
 	});
@@ -102,9 +99,10 @@ form.addEventListener("submit", (e) => {
 
 	post_todo(todo_doc)
 		.then((res) => {
-			console.log(res);
+
+			const { data } = res;
 			todotext.value = "";
-			build_todo(res)
+			build_todo(data)
 		})
 		.catch(console.error);
 });
@@ -114,11 +112,12 @@ window.addEventListener('load', (event) => {
 		.then((todos) => {
 			const todos_wrapper = document.createDocumentFragment();
 
-			todos.forEach(function (todo_doc) {
-				const todo = create_todo(todo_doc);
+			const { data } = todos;
 
+			for (const key in data) {
+				const todo = create_todo(data[key]);
 				todos_wrapper.prepend(todo);
-			});
+			}
 
 			render_todo(todos_wrapper);
 		})
