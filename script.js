@@ -1,6 +1,6 @@
 const todos = document.querySelector(".todos_list");
 const form = document.querySelector("form");
-const ip = "http://localhost:3000/todos"
+const ip = "http://mage-todo-backend.herokuapp.com/todos"
 
 const get_todos = () => {
 	return fetch(ip)
