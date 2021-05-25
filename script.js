@@ -1,6 +1,6 @@
 const todos = document.querySelector(".todos_list");
 const form = document.querySelector("form");
-const ip = "https://mage-todo-backend.herokuapp.com/todos"
+const ip = "https://167.71.102.23:3000/todos"
 
 const get_todos = () => {
 	return fetch(ip)
@@ -109,15 +109,15 @@ form.addEventListener("submit", (e) => {
 
 window.addEventListener('load', (event) => {
 	get_todos()
-		.then((todos) => {
+		.then((res) => {
 			const todos_wrapper = document.createDocumentFragment();
 
-			const { data } = todos;
+			const { data } = res;
 
-			for (const key in data) {
-				const todo = create_todo(data[key]);
-				todos_wrapper.prepend(todo);
-			}
+			data.forEach((todo)=>{
+				const todo_div = create_todo(todo);
+				todos_wrapper.prepend(todo_div);
+			});
 
 			render_todo(todos_wrapper);
 		})
