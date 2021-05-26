@@ -42,7 +42,7 @@ const delete_todo = function (id) {
 }
 
 const create_todo = function (todo_doc) {
-	const { content, checked, _id } = todo_doc;
+	const { content, checked, id } = todo_doc;
 
 	const todo = document.createElement("div");
 	todo.classList.add("todos_todo");
@@ -64,13 +64,13 @@ const create_todo = function (todo_doc) {
 	}
 
 	todo_checkbox.addEventListener("change", (e) => {
-		get_todo(_id)
-			.then(res => patch_todo({ checked: !res.data.checked }, _id))
+		get_todo(id)
+			.then(res => patch_todo({ checked: !res.data.checked }, id))
 			.then(() => todo.classList.toggle("text_overline"))
 			.catch(console.error);
 	});
 	todo_delete.addEventListener("click", (e) => {
-		delete_todo(_id)
+		delete_todo(id)
 			.then(() => todo.remove())
 			.catch(console.error);
 	});
@@ -100,6 +100,8 @@ form.addEventListener("submit", (e) => {
 	post_todo(todo_doc)
 		.then((res) => {
 
+			console.log(res);
+
 			const { data } = res;
 			todotext.value = "";
 			build_todo(data)
@@ -113,6 +115,8 @@ window.addEventListener('load', (event) => {
 			const todos_wrapper = document.createDocumentFragment();
 
 			const { data } = res;
+
+			console.log(data);
 
 			data.forEach((todo)=>{
 				const todo_div = create_todo(todo);
