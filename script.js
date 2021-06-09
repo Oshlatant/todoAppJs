@@ -1,6 +1,6 @@
 const todos = document.querySelector(".todos_list");
 const form = document.querySelector("form");
-const ip = "http://167.71.102.23:3000/todos"
+const ip = "XXXX";
 
 const get_todos = () => {
 	return fetch(ip)
